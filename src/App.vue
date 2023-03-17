@@ -3,55 +3,31 @@ import { mapState } from "vuex";
 import GameStart from "./components/states/Start.vue";
 import GameEnd from "./components/states/Finish.vue";
 import BaseDialog from "./components/Index.vue";
+import SelectCharacter from "./components/SelectCharacter.vue";
 
 export default {
     components: {
         GameStart,
         GameEnd,
         BaseDialog,
+        SelectCharacter,
     },
     props: {},
     data() {
         return {};
     },
     computed: {
-        ...mapState([
-            "uiState",
-            "questions",
-            "charactersOptions",
-            "selectedCharacter",
-        ]),
+        ...mapState(["uiState"]),
     },
-    methods: {
-        pickCharacter(value) {
-            this.$store.dispatch("setSelectedCharacter", value);
-            this.$store.dispatch("setUIState", "characterChosen");
-        },
-    },
+    methods: {},
 };
 </script>
 <template>
     <div class="contain">
         <GameStart v-if="uiState === 'start'">
-            <h2>Which hooman do you want to be?!!</h2>
-            <div
-                v-for="character in charactersOptions"
-                :key="character"
-                class="character-choices"
-            >
-                <input
-                    type="radio"
-                    :id="character"
-                    :value="character"
-                    @change="pickCharacter($event.target.value)"
-                />
-                <label :for="character" :aria-label="character">{{
-                    character
-                }}</label>
-            </div>
-            <button @click="pickCharacter">Pick your character..!!</button>
+            <SelectCharacter />
         </GameStart>
-        <GameEnd v-else-if="uiState === 'won' || uiState === 'lost'"/>
+        <GameEnd v-else-if="uiState === 'won' || uiState === 'lost'" />
         <BaseDialog v-else />
     </div>
 </template>
