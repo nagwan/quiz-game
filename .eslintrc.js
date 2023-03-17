@@ -33,6 +33,7 @@ module.exports = {
     "no-use-before-define": "off",
     "vue/prop-name-casing": ["error", "camelCase"],
     "vue/name-property-casing": ["error", "PascalCase"],
+    "vuejs-accessibility/label-has-for": "off",
     indent: "off",
     "no-console": 2,
     "max-len": "off", // leave the control to vue/max-len
