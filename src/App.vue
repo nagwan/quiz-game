@@ -2,14 +2,14 @@
 import { mapState } from "vuex";
 import GameStart from "./components/states/Start.vue";
 import GameEnd from "./components/states/Finish.vue";
-import BaseDialog from "./components/Index.vue";
+import GameThread from "./components/Index.vue";
 import SelectCharacter from "./components/SelectCharacter.vue";
 
 export default {
     components: {
         GameStart,
         GameEnd,
-        BaseDialog,
+        GameThread,
         SelectCharacter,
     },
     props: {},
@@ -28,7 +28,7 @@ export default {
             <SelectCharacter />
         </GameStart>
         <GameEnd v-else-if="uiState === 'won' || uiState === 'lost'" />
-        <BaseDialog v-else />
+        <GameThread v-else />
     </div>
 </template>
 <style lang='scss'>
