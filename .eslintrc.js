@@ -12,7 +12,7 @@ module.exports = {
   },
   rules: {
     "vue/multi-word-component-names": "off",
-    "vue/script-indent": ["error", 2, { baseIndent: 1 }],
+    "vue/script-indent": "off",
     quotes: [2, "double", { avoidEscape: true }],
     semi: 0,
     "import/no-cycle": 0,
@@ -33,9 +33,7 @@ module.exports = {
     "no-use-before-define": "off",
     "vue/prop-name-casing": ["error", "camelCase"],
     "vue/name-property-casing": ["error", "PascalCase"],
-    indent: ["error", 2, {
-      ignoredNodes: ["TemplateLiteral"],
-    }],
+    indent: "off",
     "no-console": 2,
     "max-len": "off", // leave the control to vue/max-len
     "vue/max-len": ["error", {
