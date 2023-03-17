@@ -1,11 +1,13 @@
 <script>
 import { mapState } from "vuex";
-import GameStart from "./components/GameStart.vue";
+import GameStart from "./components/states/Start.vue";
+import GameEnd from "./components/states/Finish.vue";
 import BaseDialog from "./components/Index.vue";
 
 export default {
     components: {
         GameStart,
+        GameEnd,
         BaseDialog,
     },
     props: {},
@@ -21,11 +23,10 @@ export default {
         ]),
     },
     methods: {
-
-      pickCharacter(value) {
-        this.$store.dispatch("setSelectedCharacter", value)
-        this.$store.dispatch("setUIState", "characterChosen")
-      },
+        pickCharacter(value) {
+            this.$store.dispatch("setSelectedCharacter", value);
+            this.$store.dispatch("setUIState", "characterChosen");
+        },
     },
 };
 </script>
@@ -44,10 +45,13 @@ export default {
                     :value="character"
                     @change="pickCharacter($event.target.value)"
                 />
-                <label :for="character" :aria-label="character">{{ character }}</label>
+                <label :for="character" :aria-label="character">{{
+                    character
+                }}</label>
             </div>
-            <button @click="pickCharacter">Pick your character..!! </button>
+            <button @click="pickCharacter">Pick your character..!!</button>
         </GameStart>
+        <GameEnd v-else-if="uiState === 'won' || uiState === 'lost'"/>
         <BaseDialog v-else />
     </div>
 </template>

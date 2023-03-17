@@ -90,6 +90,13 @@ export default createStore({
     setScore({ commit }, value) {
       commit("SET_SCORE", value)
     },
+
+    restart({ commit }) {
+      commit("SET_SELECTED_CHARACTER", "")
+      commit("SET_UI_STATE", "start")
+      commit("SET_QUESTION_INDEX", 0)
+      commit("SET_SCORE", 0)
+    },
   },
   modules: {
   },
